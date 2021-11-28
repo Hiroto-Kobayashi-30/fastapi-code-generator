@@ -4,11 +4,11 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, Union
 
 from fastapi import FastAPI, Path
 
-from .models import Pets
+from .models import Error, Pets
 
 app = FastAPI(
     version='1.0.0',
@@ -18,24 +18,24 @@ app = FastAPI(
 )
 
 
-@app.get('/pets', response_model=Pets)
-def list_pets(limit: Optional[int] = None) -> Pets:
+@app.get('/pets', response_model=Pets, responses={'default': {'model': Error}})
+def list_pets(limit: Optional[int] = None) -> Union[Pets, Error]:
     """
     List all pets
     """
     pass
 
 
-@app.post('/pets', response_model=None)
-def create_pets() -> None:
+@app.post('/pets', response_model=None, responses={'default': {'model': Error}})
+def create_pets() -> Union[None, Error]:
     """
     Create a pet
     """
     pass
 
 
-@app.get('/pets/{pet_id}', response_model=Pets)
-def show_pet_by_id(pet_id: str = Path(..., alias='petId')) -> Pets:
+@app.get('/pets/{pet_id}', response_model=Pets, responses={'default': {'model': Error}})
+def show_pet_by_id(pet_id: str = Path(..., alias='petId')) -> Union[Pets, Error]:
     """
     Info for a specific pet
     """
