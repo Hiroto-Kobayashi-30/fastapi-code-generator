@@ -21,3 +21,7 @@ class FatCats(BaseModel):
 
 class SlimDogs(BaseModel):
     __root__: List[Pet] = Field(..., description='list of slim dogs')
+
+
+class WildBoars(BaseModel):
+    __root__: List[Pet] = Field(..., description='list of wild boars')

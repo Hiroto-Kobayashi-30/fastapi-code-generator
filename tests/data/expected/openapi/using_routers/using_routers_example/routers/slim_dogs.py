@@ -27,8 +27,8 @@ def create_slim_dogs() -> None:
     pass
 
 
-@router.get('/dogs/{dog_id}', response_model=SlimDogs, tags=['Slim Dogs'])
-def show_dog_by_id(dog_id: str = Path(..., alias='dogId')) -> SlimDogs:
+@router.get('/dogs/{dog_id}', response_model=Pet, tags=['Slim Dogs'])
+def show_dog_by_id(dog_id: str = Path(..., alias='dogId')) -> Pet:
     """
     Info For a Specific Dog
     """

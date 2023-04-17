@@ -8,4 +8,4 @@ from typing import Optional
 
 from fastapi import Path
 
-from .models import FatCats, SlimDogs
+from .models import FatCats, Pet, SlimDogs, WildBoars
